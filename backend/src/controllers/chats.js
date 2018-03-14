@@ -4,7 +4,7 @@ exports.list = async (ctx) => {
   let options = {};
 
   let result = await database.Chat.findAll(options);
-  let chats = await Promise.all(result.map(chat => chat.toJSON()));
+  let chats = await Promise.all(result.map(chat => chats.toJSON()));
 
   let response = {
     results: chats,
@@ -16,13 +16,13 @@ exports.list = async (ctx) => {
 exports.create = async (ctx) => {
   const params = ctx.request.body;
 
-  const chat = await database.Chat.create({
-    createdAt: this.createdAt,
-    temperature: this.temperature,
-    pressure: this.pressure,
-    brightness: this.brightness
+  const enviro = await database.Chat.create({
+    createdAt: params.createdAt,
+    temperature: params.temperature,
+    pressure: params.pressure,
+    brightness: params.brightness
   });
 
-  ctx.body = await chat.toJSON();
+  ctx.body = await enviro.toJSON();
   ctx.status = 201;
 };
