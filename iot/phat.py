@@ -10,7 +10,8 @@ def readSensors():
     sensors = {
         "time":         time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
         "temperature":  envirophat.weather.temperature(),
-        "pressure":     envirophat.weather.pressure()
+        "pressure":     envirophat.weather.pressure(),
+        "light":        envirophat.light.light()
     }
 
     return sensors 
