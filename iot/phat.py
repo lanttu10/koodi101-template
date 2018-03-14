@@ -8,7 +8,7 @@ import time
 
 def readSensors():
     sensors = {
-        "time":         time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
+        "measureTime":  time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
         "temperature":  envirophat.weather.temperature(),
         "pressure":     envirophat.weather.pressure(),
         "light":        envirophat.light.light()

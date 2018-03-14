@@ -18,6 +18,7 @@ exports.create = async (ctx) => {
 
     const enviro = await database.Enviro.create({
         createdAt: params.createdAt,
+        measureTime: params.measureTime,
         temperature: params.temperature,
         pressure: params.pressure,
         brightness: params.brightness

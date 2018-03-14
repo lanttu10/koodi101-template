@@ -2,19 +2,24 @@ var Sequelize = require('sequelize');
 var sequelize = require('./sequelize');
 
 var EnviroMeasure = sequelize.define('enviro', {
-  message: Sequelize.TEXT,
+    temperature: Sequelize.FLOAT,
+    pressure: Sequelize.FLOAT,
+    brightness: Sequelize.FLOAT,
+    measureTime: Sequelize.FLOAT
 }, {
-  timestamps: true,
-  instanceMethods: {
-    toJSON: async function () {
-      return {
-        // This is a unique id that is generated automatically
-        id: this.id,
-        // This also comes for free
-        createdAt: this.createdAt,
-        temperature: this.temperature,
-        pressure: this.pressure,
-        brightness: this.brightness,
+    timestamps: true,
+    instanceMethods: {
+        toJSON: async function () {
+            return {
+                // This is a unique id that is generated automatically
+                id: this.id,
+                // This also comes for free
+                createdAt: this.createdAt,
+                createdAt: this.createdAt,
+                measureTime: this.measureTime,
+                temperature: this.temperature,
+                pressure: this.pressure,
+                brightness: this.brightness,
       };
     },
   },
