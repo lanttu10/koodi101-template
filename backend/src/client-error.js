@@ -26,7 +26,7 @@ ClientError.middleware = async (next) => {
         status: 500,
         userMessage: 'Internal server error',
         errorCode: 'SERVER_ERROR',
-        moreInfo: '',
+        moreInfo: ''
       };
       this.status = 500;
       this.body = response;
