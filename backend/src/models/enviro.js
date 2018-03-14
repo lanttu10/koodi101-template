@@ -2,10 +2,10 @@ var Sequelize = require('sequelize');
 var sequelize = require('./sequelize');
 
 var EnviroMeasure = sequelize.define('enviro', {
+    measureTime: Sequelize.TEXT,
     temperature: Sequelize.FLOAT,
     pressure: Sequelize.FLOAT,
-    brightness: Sequelize.FLOAT,
-    measureTime: Sequelize.FLOAT
+    brightness: Sequelize.FLOAT
 }, {
     timestamps: true,
     instanceMethods: {
