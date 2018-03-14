@@ -1,6 +1,6 @@
 const database = require('../database');
 
-exports.list = async (ctx) => {
+exports.getMeasures = async (ctx) => {
   let options = {};
 
   let result = await database.Enviro.findAll(options);
@@ -13,10 +13,10 @@ exports.list = async (ctx) => {
   ctx.body = response;
 };
 
-exports.create = async (ctx) => {
+exports.addMeasure = async (ctx) => {
     const params = ctx.request.body;
 
-    const enviro = await database.Enviro.create({
+    const enviro = await database.Enviro.addMeasure({
         createdAt: params.createdAt,
         measureTime: params.measureTime,
         temperature: params.temperature,

@@ -4,8 +4,6 @@ const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
 const cors = require('kcors');
 
-const chats = require('./controllers/chats');
-const greeting = require('./controllers/greeting');
 
 const enviro = require('./controllers/enviroC');
 
@@ -18,14 +16,8 @@ app.use(bodyParser());
 
 const publicRouter = new Router({ prefix: '/api' });
 
-publicRouter.post('/chats', chats.create);
-
-publicRouter.post('/enviro', enviro.create);
-publicRouter.get('/enviro', enviro.list);
-
-publicRouter.get('/chats', chats.list);
-
-publicRouter.get('/greeting', greeting.greet);
+publicRouter.post('/enviro', enviro.addMeasure);
+publicRouter.get('/enviro', enviro.getMeasures);
 
 app.use(publicRouter.routes());
 app.use(publicRouter.allowedMethods());
