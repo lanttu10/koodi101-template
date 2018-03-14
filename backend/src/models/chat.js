@@ -12,7 +12,9 @@ var ChatMessage = sequelize.define('chats', {
         id: this.id,
         // This also comes for free
         createdAt: this.createdAt,
-        message: this.message,
+        temperature: this.temperature,
+        pressure: this.pressure,
+        brightness: this.brightness,
       };
     },
   },
