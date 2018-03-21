@@ -16,7 +16,7 @@ exports.getMeasures = async (ctx) => {
 exports.addMeasure = async (ctx) => {
     const params = ctx.request.body;
 
-    const enviro = await database.Enviro.addMeasure({
+    const enviro = await database.Enviro.create({
         createdAt: params.createdAt,
         measureTime: params.measureTime,
         temperature: params.temperature,

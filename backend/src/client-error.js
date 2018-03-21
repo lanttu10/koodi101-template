@@ -4,7 +4,7 @@ var ClientError = module.exports = function (code, status, info) {
   this.info = info || '';
 };
 
-ClientError.prototype = Object.addMeasure(Error.prototype);
+ClientError.prototype = Object.create(Error.prototype);
 
 ClientError.middleware = async (next) => {
   try {
