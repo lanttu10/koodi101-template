@@ -9,16 +9,16 @@ const baseURL = process.env.ENDPOINT;
 
 /****** ADD YOUR CODE AFTER THIS LINE ******/
 
-const getGreetingFromBackend = async () => {
+const getMeasurementFromBackend = async () => {
   try {
-    const url = `${baseURL}/api/greeting`
-    console.log("Getting greeting from "+url)
+    const url = `${baseURL}/api/enviro`
+    console.log("Getting measurement from '"+url+"'...")
     const response = await fetch(url);
     return response.json()
   } catch (error) {
     console.error(error);
   }
-  return { greeting :"Could not get greeting from backend"};
+  return { greeting :"Could not get measurement from backend"};
 };
 
 
@@ -26,25 +26,42 @@ const BackendGreeting = (props) => (
   <div><p>Backend says: {props.greeting}</p></div>
 );
 
+const ShowMeasurement = (props) => (
+    <div><p>
+        Latest measure: {props.state.measureTime}<br></br>
+        Temperature: {props.state.temperature}<br></br>
+        Pressure: {props.state.pressure}<br></br>
+        Brightness: {props.state.brightness}</p></div>
+);
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      greeting: "",
+        measureTime: "",
+        temperature: "",
+        pressure: "",
+        brightness: ""
     };
   }
 
   async componentWillMount() {
-    const response = await getGreetingFromBackend();
-    this.setState({greeting: response.greeting});
+    const response = await getMeasurementFromBackend();
+    const measure = response.results[0];
+    this.setState({
+        measureTime: measure.measureTime,
+        temperature: measure.temperature,
+        pressure: measure.pressure,
+        brightness: measure.brightness
+    });
   }
 
   render() {
 
     return (
-      <BackendGreeting greeting={this.state.greeting} />
+
+      <ShowMeasurement state={this.state} />
     );
   }
 }

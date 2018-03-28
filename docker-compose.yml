@@ -10,7 +10,7 @@ services:
     depends_on:
       - backend
     environment:
-      - ENDPOINT=${ENDPOINT}
+      - ENDPOINT=http://localhost:9000
   backend:
     build: backend
     command: npm run dev
