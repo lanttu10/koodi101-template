@@ -48,7 +48,7 @@ class App extends Component {
 
   async componentWillMount() {
     const response = await getMeasurementFromBackend();
-    const measure = response.results[0];
+    const measure = response.results[response.results.length - 1];
     this.setState({
         measureTime: measure.measureTime,
         temperature: measure.temperature,
