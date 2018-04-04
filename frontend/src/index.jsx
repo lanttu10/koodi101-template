@@ -27,11 +27,18 @@ const BackendGreeting = (props) => (
 );
 
 const ShowMeasurement = (props) => (
-    <div><p>
-        Latest measure: {props.state.measureTime}<br></br>
+    <div>
+        <h1>Latest measure</h1>
+        <p>
+        Measuring time: {props.state.measureTime}<br></br>
         Temperature: {props.state.temperature}<br></br>
         Pressure: {props.state.pressure}<br></br>
-        Brightness: {props.state.brightness}</p></div>
+        Brightness: {props.state.brightness}
+        </p>
+        <a href="">
+            Refresh
+        </a>
+    </div>
 );
 
 class App extends Component {
