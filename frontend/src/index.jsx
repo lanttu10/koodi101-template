@@ -33,7 +33,9 @@ const ShowMeasurement = (props) => (
         Measuring time: {props.state.measureTime}<br></br>
         Temperature: {props.state.temperature}<br></br>
         Pressure: {props.state.pressure}<br></br>
-        Brightness: {props.state.brightness}
+        Brightness: {props.state.brightness}<br></br>
+        First derivative of brightness: {(props.state.brightness-props.state.brightnessBefore)/(1/6)} brightness/hour <br></br>
+        Second derivative of brightness: {(((props.state.brightnessBefore-props.state.twoBrightnessBefore)/(1/6) - (props.state.brightness-props.state.brightnessBefore)/(1/6))/(1/6))} brightness/hour^2<br></br>
         </p>
         <a href="">
             Refresh
@@ -56,11 +58,18 @@ class App extends Component {
   async componentWillMount() {
     const response = await getMeasurementFromBackend();
     const measure = response.results[response.results.length - 1];
+    const measureBefore = response.result[response.result.length - 2];
+    const twoMeasuresBefore = response.result[response.result.length - 3];
+    const threeMeasuresBefore = response.result[response.result.length - 4];
+    const fourMeasuresBefore = response.result[response.result.length - 5];
     this.setState({
         measureTime: measure.measureTime,
         temperature: measure.temperature,
         pressure: measure.pressure,
-        brightness: measure.brightness
+        brightness: measure.brightness,
+        brightnessBefore: measureBefore.brightness,
+        twoBrightnessBefore: twoMeasuresBefore.brightness,
+        threeBrightnessBefore: threeMeasuresBefore.brightness
     });
   }
 
